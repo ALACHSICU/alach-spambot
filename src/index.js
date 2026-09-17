@@ -109,4 +109,8 @@ client.on('interactionCreate', async (interaction) => {
     }
 })
 
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
+
 client.login(process.env.TOKEN)
