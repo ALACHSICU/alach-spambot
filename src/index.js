@@ -28,6 +28,10 @@ client.on('clientReady', async () => {
         name: 'sth',
         type: ActivityType.Listening
     })
+
+    app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+    });
 });
 
 client.on('messageCreate', (msg) => {
@@ -113,10 +117,6 @@ client.on('interactionCreate', async (interaction) => {
         interaction.reply('stoped')
     }
 })
-
-app.get('/health', (req, res) => {
-  res.status(200).send('OK');
-});
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('running');
