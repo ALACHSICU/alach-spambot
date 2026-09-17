@@ -1,3 +1,8 @@
+// app thing
+const express = require('express');
+const app = express();
+
+// bot thing
 require('dotenv').config()
 const {Client, IntentsBitField, ActivityType} = require('discord.js')
 const client = new Client({
@@ -111,6 +116,10 @@ client.on('interactionCreate', async (interaction) => {
 
 app.get('/health', (req, res) => {
   res.status(200).send('OK');
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log('running');
 });
 
 client.login(process.env.TOKEN)
