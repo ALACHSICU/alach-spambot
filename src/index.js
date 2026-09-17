@@ -2,6 +2,15 @@
 const express = require('express');
 const app = express();
 
+app.get('/health', (req, res) => {
+  res.status(200).send('Bot is running');
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Web server đang chạy ở port ${PORT}`);
+});
+
 // bot thing
 require('dotenv').config()
 const {Client, IntentsBitField, ActivityType} = require('discord.js')
@@ -28,38 +37,11 @@ client.on('clientReady', async () => {
         name: 'sth',
         type: ActivityType.Listening
     })
-
-    app.get('/health', (req, res) => {
-    res.status(200).send('OK');
-    });
 });
 
-client.on('messageCreate', (msg) => {
-    // let targetChannel = client.channels.cache.get('1525448756630388758') // 1550040896014393344
-    // if (msg.content == '!spam'){
-    //     targetChannel.send('# TEDOMI DEP TRAI NHAT SERVER')
-    //     active = true
-    //     didactive = true
-    // }
-    // if (msg.content == '!stop'){
-    //     active = false
-    //     didactive = false
-    //     msgPosted = 0
-    //     msg.reply('stoped')
-    // }
-    // if (active) {
-    //     targetChannel.send('# TEDOMI DEP TRAI NHAT SERVER')
-    //     msgPosted += 1
-    //     if (msgPosted >= 200) {
-    //         msg.reply('enough, 200 msg posted so i will stop🥀')
-    //         active = false
-    //         didactive = false
-    //         msgPosted = 0
-    //         msg.reply('stoped')
-    //     }
-    // }
-    // console.log(active, msgPosted)
-})
+// client.on('messageCreate', (msg) => {
+//     
+// })
 
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
@@ -117,9 +99,5 @@ client.on('interactionCreate', async (interaction) => {
         interaction.reply('stoped')
     }
 })
-
-app.listen(process.env.PORT || 3000, () => {
-  console.log('running');
-});
 
 client.login(process.env.TOKEN)
