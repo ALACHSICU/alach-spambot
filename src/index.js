@@ -64,6 +64,11 @@ client.on('interactionCreate', async (interaction) => {
 
 
     if (interaction.commandName == 'spam') {
+        if (active) {
+            interaction.reply('đừng spam lệnh này nx, có cái spam khác đang chạy r, nổ server h😭')
+            return
+        }
+
         interaction.reply('started')
         active = true
         msgPosted = 0
@@ -89,6 +94,12 @@ client.on('interactionCreate', async (interaction) => {
             interaction.reply(`nhiều hơn ${maxMsg} hoặc (nhỏ hơn 0) nên không spam đc tránh nổ server🐧`)
             return
         }
+        
+        if (active) {
+            interaction.reply('có cái spam khác đang chạy, spam lệnh này coi chừng nổ server h🥀')
+            return
+        }
+
         interaction.reply(`start spaming ${amount} msg`)
         active = true
         msgPosted = 0
