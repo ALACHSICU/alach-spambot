@@ -25,8 +25,16 @@ const client = new Client({
     ]
 })
 
+const think = [
+    'tại sao phải spam cơ chứ ._.?',
+    'TEDOMI DEP TRAI NHAT SERVERRRR🗣️🗣️🗣️',
+    'spammm',
+    'spam 100 tn là đủ đừng bắt spam thêm nx ;-;'
+]
+
 let active = false
 let msgPosted = 0
+let i = 0
 
 async function wait(milisec) {
   return new Promise((resolve) => setTimeout(resolve, milisec));
@@ -35,10 +43,13 @@ async function wait(milisec) {
 client.on('clientReady', async () => {
     console.log('ready')
 
-    client.user.setActivity({
-        name: 'sth',
-        type: ActivityType.Listening
-    })
+    setInterval(() => {
+        client.user.setPresence({
+            status: 'idle',
+            activities: [{ name: 'Custom Status', state: think[i], type: ActivityType.Custom }]
+        })
+        i = (i + 1) % think.length
+    }, 20000);
 });
 
 // client.on('messageCreate', (msg) => {
@@ -62,7 +73,7 @@ client.on('interactionCreate', async (interaction) => {
             await wait(1000)
         }
         if (active){
-            targetChannel.send('enough, 100 msg posted so i will stop🥀')
+            targetChannel.send('đủ r đấy, 100 tin nhắn r, gần nổ server r kìa🥀')
         }
 
         console.log(msgPosted)
@@ -74,7 +85,7 @@ client.on('interactionCreate', async (interaction) => {
     if (interaction.commandName == 'spamamount') {
         const amount = interaction.options.get('amount').value
         if (0 > amount || 100 < amount) {
-            interaction.reply('its more than 100 or smaller than 0 so i will not doing that')
+            interaction.reply('nhiều hơn 100 hoặc (nhỏ hơn 0) nên không spam đc tránh nổ server🐧')
             return
         }
         interaction.reply(`start spaming ${amount} msg`)
