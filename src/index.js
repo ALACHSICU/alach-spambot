@@ -13,6 +13,8 @@ app.listen(PORT, () => {
 
 // bot thing
 require('dotenv').config()
+console.log('TOKEN tồn tại:', !!process.env.TOKEN)
+console.log('Độ dài TOKEN:', process.env.TOKEN?.length)
 const {Client, IntentsBitField, ActivityType} = require('discord.js')
 const client = new Client({
     intents: [
@@ -54,13 +56,13 @@ client.on('interactionCreate', async (interaction) => {
         active = true
         msgPosted = 0
 
-        for (msgPosted = 0; msgPosted < 1000; msgPosted += 1) {
+        for (msgPosted = 0; msgPosted < 100; msgPosted += 1) {
             if (!active) break
             targetChannel.send('# TEDOMI DEP TRAI NHAT SERVER🗣️')
             await wait(1000)
         }
         if (active){
-            targetChannel.send('enough, 1000 msg posted so i will stop🥀')
+            targetChannel.send('enough, 100 msg posted so i will stop🥀')
         }
 
         console.log(msgPosted)
@@ -71,8 +73,8 @@ client.on('interactionCreate', async (interaction) => {
 
     if (interaction.commandName == 'spamamount') {
         const amount = interaction.options.get('amount').value
-        if (0 > amount || 1000 < amount) {
-            interaction.reply('its more than 1k or smaller than 0 so i will not doing that')
+        if (0 > amount || 100 < amount) {
+            interaction.reply('its more than 100 or smaller than 0 so i will not doing that')
             return
         }
         interaction.reply(`start spaming ${amount} msg`)
