@@ -97,9 +97,6 @@ client.on('interactionCreate', async (interaction) => {
             targetChannel.send('# TEDOMI DEP TRAI NHAT SERVER🗣️')
             await wait(1000)
         }   
-        if (active) {
-            targetChannel.send('done spamming')
-        }
         console.log(msgPosted)
 
         active = false
