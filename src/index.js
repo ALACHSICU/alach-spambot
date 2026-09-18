@@ -6,20 +6,6 @@ app.get('/health', (req, res) => {
   res.status(200).send('Bot is running');
 });
 
-app.get('/test-discord', async (req, res) => {
-  try {
-    const response = await fetch('https://discord.com/api/v10/gateway');
-    const text = await response.text();
-    res.status(200).json({
-      status: response.status,
-      contentType: response.headers.get('content-type'),
-      body: text.slice(0, 300)
-    });
-  } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
-  }
-});
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Web server đang chạy ở port ${PORT}`);
