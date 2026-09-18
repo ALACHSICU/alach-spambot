@@ -103,3 +103,9 @@ client.on('interactionCreate', async (interaction) => {
 })
 
 client.login(process.env.TOKEN)
+  .then(() => console.log('LOGIN THÀNH CÔNG'))
+  .catch((err) => console.error('LOGIN THẤT BẠI:', err))
+
+client.on('error', (err) => {
+  console.error('CLIENT ERROR:', err)
+})
