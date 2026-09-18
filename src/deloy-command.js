@@ -4,13 +4,13 @@ const {REST, Routes, ApplicationCommandOptionType} = require('discord.js');
 const commands = [
     {
         name: 'spam',
-        description: 'Spam in the chat (stop when posted 100 msg)'
+        description: 'Spam in the chat (stop when posted 200 msg)'
     },{
         name: 'stop',
         description: 'Stop the current spam'
     },{
         name: 'spamamount',
-        description: 'Spam in a amount (not more than 100)',
+        description: 'Spam in a amount (not more than 200)',
         options: [
             {
                 name: 'amount',

@@ -35,6 +35,7 @@ const think = [
 let active = false
 let msgPosted = 0
 let i = 0
+let maxMsg = 200
 
 async function wait(milisec) {
   return new Promise((resolve) => setTimeout(resolve, milisec));
@@ -67,13 +68,13 @@ client.on('interactionCreate', async (interaction) => {
         active = true
         msgPosted = 0
 
-        for (msgPosted = 0; msgPosted < 100; msgPosted += 1) {
+        for (msgPosted = 0; msgPosted < maxMsg; msgPosted += 1) {
             if (!active) break
             targetChannel.send('# TEDOMI DEP TRAI NHAT SERVER🗣️')
             await wait(1000)
         }
         if (active){
-            targetChannel.send('đủ r đấy, 100 tin nhắn r, gần nổ server r kìa🥀')
+            targetChannel.send(`đủ r đấy, ${maxMsg} tin nhắn r, gần nổ server r kìa🥀`)
         }
 
         console.log(msgPosted)
@@ -84,8 +85,8 @@ client.on('interactionCreate', async (interaction) => {
 
     if (interaction.commandName == 'spamamount') {
         const amount = interaction.options.get('amount').value
-        if (0 > amount || 100 < amount) {
-            interaction.reply('nhiều hơn 100 hoặc (nhỏ hơn 0) nên không spam đc tránh nổ server🐧')
+        if (0 > amount || maxMsg < amount) {
+            interaction.reply(`nhiều hơn ${maxMsg} hoặc (nhỏ hơn 0) nên không spam đc tránh nổ server🐧`)
             return
         }
         interaction.reply(`start spaming ${amount} msg`)
