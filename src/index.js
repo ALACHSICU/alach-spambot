@@ -47,7 +47,7 @@ client.on('clientReady', async () => {
 
 client.on('interactionCreate', async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
-    let targetChannel = client.channels.cache.get('1550040896014393344')
+    let targetChannel = client.channels.cache.get('1525448756630388758')
     console.log('interaction created')
 
 
