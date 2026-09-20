@@ -77,6 +77,7 @@ client.on('interactionCreate', async (interaction) => {
             if (!active) break
             targetChannel.send('# TEDOMI DEP TRAI NHAT SERVER🗣️')
             await wait(1000)
+            if (msgPosted%20 == 0) {await wait(1000)}
         }
         if (active){
             targetChannel.send(`đủ r đấy, ${maxMsg} tin nhắn r, gần nổ server r kìa🥀`)
